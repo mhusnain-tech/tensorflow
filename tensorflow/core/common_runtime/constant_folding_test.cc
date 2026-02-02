@@ -39,6 +39,7 @@ limitations under the License.
 #include "tensorflow/core/lib/core/threadpool.h"
 #include "tensorflow/core/lib/strings/strcat.h"
 #include "tensorflow/core/platform/null_file_system.h"
+#include "absl/strings/string_view.h"
 #include "tensorflow/core/platform/test.h"
 #include "tensorflow/core/public/session_options.h"
 
@@ -707,7 +708,7 @@ class TestTFEnvironment : public ::tensorflow::EnvWrapper {
   using tf_base = ::tensorflow::EnvWrapper;
   TestTFEnvironment() : ::tensorflow::EnvWrapper(Default()) {}
   absl::Status GetFileSystemForFile(
-      const string& fname, ::tensorflow::FileSystem** result) override {
+      absl::string_view fname, ::tensorflow::FileSystem** result) override {
     was_used_ = true;
     if (fname == "test://test") {
       *result = &test_filesystem_;
