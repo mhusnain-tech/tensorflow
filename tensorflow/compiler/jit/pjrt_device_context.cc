@@ -26,6 +26,7 @@ limitations under the License.
 #include "tensorflow/compiler/tf2xla/literal_util.h"
 #include "xla/pjrt/pjrt_client.h"
 #include "xla/pjrt/pjrt_common.h"
+#include "xla/runtime/device_id.h"
 #include "xla/tsl/c/tsl_status_internal.h"
 #include "xla/tsl/framework/device_id_utils.h"
 #include "tensorflow/core/common_runtime/dma_helper.h"

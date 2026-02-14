@@ -42,6 +42,7 @@ limitations under the License.
 #include "xla/pjrt/pjrt_executable.h"
 #include "xla/pjrt/plugin/xla_cpu/cpu_client_options.h"
 #include "xla/pjrt/plugin/xla_cpu/xla_cpu_pjrt_client.h"
+#include "xla/runtime/device_id.h"
 #include "xla/tests/literal_test_util.h"
 #include "xla/tsl/framework/device_id_utils.h"
 #include "xla/tsl/lib/core/status_test_util.h"

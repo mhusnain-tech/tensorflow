@@ -50,6 +50,7 @@ limitations under the License.
 #include "xla/pjrt/pjrt_client.h"
 #include "xla/pjrt/pjrt_common.h"
 #include "xla/pjrt/pjrt_executable.h"
+#include "xla/runtime/device_id.h"
 #include "xla/service/executable.h"
 #include "xla/service/maybe_owning_device_memory.h"
 #include "xla/service/shaped_buffer.h"
@@ -867,9 +868,9 @@ absl::Status RunPjRtExecutable(
   const DeviceType& device_type = GetDeviceType(ctx);
   const int pjrt_device_id =
       tsl::GetDeviceIdFromDeviceParsedName(ctx->device()->parsed_name());
-  TF_ASSIGN_OR_RETURN(xla::PjRtDevice * device,
-                      pjrt_client->LookupAddressableDevice(
-                          xla::PjRtLocalDeviceId(pjrt_device_id)));
+  TF_ASSIGN_OR_RETURN(
+      xla::PjRtDevice * device,
+      pjrt_client->LookupAddressableDevice(xla::LocalDeviceId(pjrt_device_id)));
 
   gpu::GpuServingDeviceSelectorResource* device_selector_resource = nullptr;
   if (device_type == DEVICE_GPU) {
